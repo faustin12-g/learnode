@@ -1,3 +1,4 @@
+import { read } from 'fs'
 import fs from 'fs/promises'
 import path from 'path'
 
@@ -71,4 +72,11 @@ import path from 'path'
 // fs.rmdir('user/name/mine')
 
 
+async function readme()
+{
+    const [a, b] = await Promise.all([fs.readFile('test.txt', 'utf8'), fs.readFile('mine.txt', 'utf8')])
+    return a+b
+}
 
+
+readme().then(res=>console.log(res))
